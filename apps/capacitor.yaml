@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
   name: capacitor
-  namespace: default
+  namespace: flux-system
 spec:
   interval: 12h
   url: oci://ghcr.io/gimlet-io/capacitor-manifests
@@ -14,9 +14,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: capacitor
-  namespace: default
+  namespace: flux-system
 spec:
-  targetNamespace: default
+  targetNamespace: flux-system
   interval: 1h
   retryInterval: 2m
   timeout: 5m
@@ -31,7 +31,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: capacitor-ingress
-  namespace: default
+  namespace: flux-system
 spec:
   policyTypes:
     - Ingress
@@ -42,23 +42,19 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: capacitor
 ---
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: capacitor-ingress
-  namespace: default
+  namespace: flux-system
 spec:
-  parentRefs:
-    - name: traefik
-      sectionName: http
-      kind: Gateway
   rules:
-    - matches:
-      - path:
-          type: PathPrefix
-          value: /
-
-      backendRefs:
-      - name: capacitor
-        namespace: default
-        port: 9000
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: capacitor
+                port:
+                  number: 9000

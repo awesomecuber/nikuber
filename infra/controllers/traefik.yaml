@@ -26,9 +26,7 @@ spec:
       interval: 12h
   values:
     providers:
-      # kubernetesCRD:
-      #   enabled: false
       kubernetesIngress:
         enabled: false
-      kubernetesGateway:
+      kubernetsGateway:
         enabled: true
