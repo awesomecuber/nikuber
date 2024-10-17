@@ -50,7 +50,15 @@ metadata:
 spec:
   parentRefs:
     - name: traefik
+      sectionName: http
+      kind: Gateway
   rules:
-    - backendRefs:
-        - name: capacitor
-          port: 9000
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /
+
+      backendRefs:
+      - name: capacitor
+        namespace: default
+        port: 9000
