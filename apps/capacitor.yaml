@@ -49,8 +49,7 @@ metadata:
   namespace: flux-system
 spec:
   rules:
-    - host: gitops.example.com
-      http:
+    - http:
         paths:
           - pathType: Prefix
             path: /
