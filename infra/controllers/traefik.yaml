@@ -24,9 +24,4 @@ spec:
         name: traefik
         namespace: kube-system
       interval: 12h
-  values:
-    providers:
-      kubernetesIngress:
-        enabled: false
-      kubernetsGateway:
-        enabled: true
+  values: {}
