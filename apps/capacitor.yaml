@@ -45,8 +45,6 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
   name: capacitor-ingress
   namespace: flux-system
 spec:
@@ -60,5 +58,3 @@ spec:
                 name: capacitor
                 port:
                   number: 9000
-  tls:
-    - secretName: ingress-cert
