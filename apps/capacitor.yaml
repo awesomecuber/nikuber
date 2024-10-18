@@ -47,9 +47,11 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
+    acme.cert-manager.io/http01-edit-in-place: "true"
   name: capacitor-ingress
   namespace: flux-system
 spec:
+  ingressClassName: traefik
   rules:
     - host: nikuber.com
       http:
