@@ -45,11 +45,14 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
   name: capacitor-ingress
   namespace: flux-system
 spec:
   rules:
-    - http:
+    - host: nikuber.com
+      http:
         paths:
           - pathType: Prefix
             path: /
@@ -58,3 +61,7 @@ spec:
                 name: capacitor
                 port:
                   number: 9000
+  tls:
+    - hosts:
+        - nikuber.com
+      secretName: nikuber-cert
