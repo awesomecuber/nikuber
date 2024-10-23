@@ -23,7 +23,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: "27.0.2"
+      version: "32.x"
       sourceRef:
         kind: HelmRepository
         name: traefik
@@ -35,17 +35,3 @@ spec:
         publishedService:
           enabled: true
     priorityClassName: "system-cluster-critical"
-    image:
-      repository: "rancher/mirrored-library-traefik"
-      tag: "2.11.10"
-    tolerations:
-    - key: "CriticalAddonsOnly"
-      operator: "Exists"
-    - key: "node-role.kubernetes.io/control-plane"
-      operator: "Exists"
-      effect: "NoSchedule"
-    - key: "node-role.kubernetes.io/master"
-      operator: "Exists"
-      effect: "NoSchedule"
-    service:
-      ipFamilyPolicy: "PreferDualStack"
