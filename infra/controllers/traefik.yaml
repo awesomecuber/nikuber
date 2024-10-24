@@ -31,9 +31,10 @@ spec:
       interval: 12h
   values:
     providers:
+      kubernetesCRD:
+        enabled: false
       kubernetesIngress:
-        publishedService:
-          enabled: true
+        enabled: false
       kubernetesGateway:
         enabled: true
     priorityClassName: "system-cluster-critical"
