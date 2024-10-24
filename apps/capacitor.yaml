@@ -49,10 +49,11 @@ spec:
     - namespace: traefik
       name: traefik
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301
+    - backendRefs:
         - name: capacitor
           port: 9000
