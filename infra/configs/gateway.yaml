@@ -1,11 +1,28 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: traefik-gateway
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: traefik
   namespace: traefik
 spec:
   gatewayClassName: traefik
   listeners:
     - name: http
+      hostname: nikuber.com
+      port: 8000
       protocol: HTTP
-      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: https
+      hostname: nikuber.com
+      port: 8443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: nikuber-cert
