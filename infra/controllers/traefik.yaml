@@ -37,4 +37,6 @@ spec:
         enabled: false
       kubernetesGateway:
         enabled: true
+    gateway:
+      enabled: false # this disables traefik auto-creating a gateway
     priorityClassName: "system-cluster-critical"
