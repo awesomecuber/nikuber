@@ -9,14 +9,24 @@ spec:
   gatewayClassName: traefik
   listeners:
     - name: http
-      hostname: nikuber.com
       port: 8000
       protocol: HTTP
       allowedRoutes:
         namespaces:
           from: All
-    - name: https
+    - name: https-topleveldomain
       hostname: nikuber.com
+      port: 8443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: nikuber-cert
+    - name: https-subdomain
+      hostname: "*.nikuber.com"
       port: 8443
       protocol: HTTPS
       allowedRoutes:
