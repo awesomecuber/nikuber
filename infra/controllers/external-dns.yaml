@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: external-dns
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: digital-ocean-token
+  namespace: external-dns
+spec:
+  encryptedData:
+    DO_TOKEN: AgAl80M2WBPSDOY4eCNd15q9JEq7xITefqvq75VpVWfez+/6qrWvEkDFCxPHfzmynPPfuBG3QFqIvIC8dLQqNzPEFimGFVh/bi95yuBzq82Qb3yClHc4jMFJtSJY8tygnNnNVZnrzlGBLNrtwEZKJg30LUqmMdQdJcKqXnn5GxgK4KhS9VHE1xgqLjnZT1WOYUImzPkj48ba1f9woX2mRRB2drKhwWJWZrwjUTWIhT2LJM92YvDbc43dS0QxVDWzCQnIf9IFCP8hSq1VR9oYFbP10qrwXbDnNZPjC3sqWV6yXADKnJpQEnCzxYBJJD21ZWwFCYgOZtt/dZg7pBnc17N/Aw2bdmab16omudvPTaY5FvJ93hu9LMTJ6tb/2vVvdX6Bwe1E/KQudnTO3Pfn1GH5Ii+6xx03oJliInepu7ra8HPp+N2EPxuDVsFKSxTex4LOYPngmy7erx20K1Omww9mVk+/tC6bHqI6TdzhJjOZa8EISHPtda0AiFv7ASSVFPGwU0FJelkZ2uBWAd2ByY+0U1TV3zpA+38a03FqPSjIj+Ds/r79iQciyewyexi7woSRKb6HXTGNFk2hdt6/Xkwt0fVq2xcQSLzWdQGOVx0+eCOINBEOUxKn1+qHHbrEG7fy6cMuN+nTEy3jtVhARmO+dLrg24Fan9zl/d74TeB3q/+7Yo5LD42Bv1ELdPG7pHR/lFbblK4CWDXYRbg7foLjpNJnX1zTKaj8wrVuaUa9RMq2UFwg+J1D2y47kixqUi9XQuuSDR5rsnl9GkfGn9qkyX35zh/LXRo=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: digital-ocean-token
+      namespace: external-dns
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  interval: 24h
+  url: https://kubernetes-sigs.github.io/external-dns/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: external-dns
+      version: "1.x"
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+        namespace: external-dns
+      interval: 12h
+  values:
+    provider: 
+      name: digitalocean
+    sources:
+      - gateway-httproute
+    env:
+      - name: DO_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: digital-ocean-token
+            key: DO_TOKEN
