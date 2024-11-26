@@ -32,7 +32,7 @@ spec:
   values:
     providers:
       kubernetesCRD:
-        enabled: false
+        enabled: true
       kubernetesIngress:
         enabled: false
       kubernetesGateway:
