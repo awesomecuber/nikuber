@@ -39,6 +39,31 @@ spec:
     - {}
   podSelector: {}
 ---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: nico-basic-auth
+  namespace: flux-system
+spec:
+  encryptedData:
+    password: AgAD5VCKKbV8W+U8hus94GKQeLpMcB42AXF4XV6obC9jeOokiB1/vaWwRvq5pscHPhLA2i9gxM58lBFX9sbmvhOYt/ARFX8yBlRF4/u3EjVGRSsTKRxQcbnqVhI4wetUdMbm6QpmEpvh0JxVOnJ0935CRlTxb0OmYVTZRU3scTeVE2BgpHsHaElRVJvA0xeUnGFVqC8uj6kJGFuVOWnRsH2g4pF1XT1YUoxhQ5RcFHuNqnW/G5tCnN8J+qsk37T8COD9wZB2haiBczKLZHfWdwF6VklC09PbaT6ZBlZ+aqOgr/UHEBuYb+6MSTad1cfOdZpeK2TqoQ41csjOK3ynvNR2pL9F8YXkP3OFvaoxsToJojPvBeoXUtDQsw/pDu3KcBV+V4aqRECoF1amcl15ic3h7gcRHYeWg2BZEaTgcCMi3Ho7QcskOG2GGo7V8Dlm7qZGmK5N/RX1zFkpp5c5iGUzqgV4nQpfXefbjqKdtp8AZMuy/8WnborAPMZ3ssehJrMtdRFJSkfYa22AExZwyqjsFruA7WMzjZFRagxr92nRh49Xsowhe2MmpCmmIoLLVpRUt6mIGzRYnJj/NWqysywSD2f4P75ciJ9RywKOQ+qOGtRl4aKWdoXloxJ/sy793iZmZAZYnTRFCAICz52q+TpvsQffrV1HSHQOlzmwympHfrwvgmoiVkz1NCRUhQiCFl4KWsdTsLGXjrA=
+    username: AgDBFXrZP0u5IAMhJ1+YDyRH9DYzfIrSF9lx5MfQsm4A1J3+1sfpyrBXsuIVbGN2MRLfGoNIj3mWbTyEeXXdSxEU9SeH1o0mN0NJJUnE82sKgpbniN6AhvvUPzV18tX7oGYJugqZc5MPG2jj+/cwPtE+tP6rt5yteVkk3C0W/f+G+b/bOAoIIzOJZuXLClLTp6qrZai3aaRMssnsRtWol3PDc0wj+p3I6YhRaTEe9qaMSiVPbIafi6FrsaNXpSuxym2JUZo7HbXGfMcj64Z4++Uaow4uVw0jJ3lfG2l2xheXzG0ETBQ468PcrNlCcyxceU06SfhJdaDmWZyEPZuUtLP30WnHGMD2ziSum1Wc1rX8zLvweGQNRCduintJOQZHBcsruQLqN368GrmfQGiaIkNz+gHTsQ3eBNe3rW/5LHbwDeIZwIWmyFy2LWaruEds95o9ge6RDemZNpm4RTWSYLCwZCjSUkYC61gipKoyRfgc+hW60TJqK0bek+DAdFouVJnzeOmFljTnHiC/fmR1/FtjJEXVE4faVY9/HZDyQGgQdiwKeBvQn6mSzAkgJML/9Eeui6CT6GKRjJYoY/cJzy4FJzIFpes6T8p2hdEyD01emEY6L+wijd0zFNF9kMq7ccFvoQX3VZdspT5GzQkLLVOYVD7x88C5BDjllAyyyyqP8koa6XP9kdGVk2NcFinr0lakhCSQ
+  template:
+    metadata:
+      creationTimestamp: null
+      name: nico-basic-auth
+      namespace: flux-system
+    type: kubernetes.io/basic-auth
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: basic-auth
+spec:
+  basicAuth:
+    secret: nico-basic-auth
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -52,6 +77,12 @@ spec:
       name: traefik
       sectionName: https-subdomain
   rules:
-    - backendRefs:
+    - filters:
+        - type: ExtensionRef
+          extensionRef:
+            group: traefik.io
+            kind: Middleware
+            name: basic-auth
+      backendRefs:
         - name: capacitor
           port: 9000
