@@ -25,9 +25,6 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-traefik
     solvers:
-      - http01:
-          ingress:
-            ingressClassName: traefik
       - dns01:
           digitalocean:
             tokenSecretRef:

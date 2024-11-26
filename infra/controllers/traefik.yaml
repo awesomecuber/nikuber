@@ -39,6 +39,8 @@ spec:
         enabled: true
         statusAddress:
           ip: 97.126.64.237
+    ingressClass:
+      enabled: false
     gateway:
       enabled: false # this disables traefik auto-creating a gateway
     priorityClassName: "system-cluster-critical"
