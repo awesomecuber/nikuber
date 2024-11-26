@@ -64,7 +64,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: source-controller
+    app: homepage
   ports:
     - protocol: TCP
       port: 8080
