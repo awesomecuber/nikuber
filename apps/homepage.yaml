@@ -43,7 +43,7 @@ spec:
             - name: SERVER_HOST
               value: 0.0.0.0
             - name: SERVER_PORT
-              value: 8080
+              value: "8080"
             - name: SERVER_ROOT
               value: /static
           ports:
