@@ -4,3 +4,4 @@ resources:
   - capacitor.yaml
   - homepage.yaml
   - https-redirect.yaml
+  - minecraft.yaml

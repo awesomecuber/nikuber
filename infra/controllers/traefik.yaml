@@ -37,10 +37,17 @@ spec:
         enabled: false
       kubernetesGateway:
         enabled: true
+        experimentalChannel: true
         statusAddress:
           ip: 97.126.64.237
     ingressClass:
       enabled: false
     gateway:
       enabled: false # this disables traefik auto-creating a gateway
+    ports:
+      minecraft:
+        port: 25565
+        expose:
+          default: true
+        exposedPort: 25565
     priorityClassName: "system-cluster-critical"
