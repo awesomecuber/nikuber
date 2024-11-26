@@ -37,6 +37,8 @@ spec:
         enabled: false
       kubernetesGateway:
         enabled: true
+        statusAddress:
+          ip: 97.126.64.237
     gateway:
       enabled: false # this disables traefik auto-creating a gateway
     priorityClassName: "system-cluster-critical"
