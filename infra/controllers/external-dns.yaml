@@ -55,3 +55,4 @@ spec:
           secretKeyRef:
             name: digital-ocean-token
             key: DO_TOKEN
+    logLevel: debug
