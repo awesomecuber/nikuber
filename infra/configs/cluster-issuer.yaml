@@ -1,4 +1,19 @@
 ---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: digital-ocean-token
+  namespace: cert-manager
+spec:
+  encryptedData:
+    DO_TOKEN: AgC8VDa6LdKu1XjbncaeX2KXE6Kh8407hy20Wt9zY9I4xUgUGPNrrXbgFOH3vCMJrAHsL+mnaoTrqz3UM4ShW4HDKQJ8zoFqxVzo3d2L5d7FARjvwjIXdBCnPxYVstbkWNKM27BoJqzQq2r+TqO1fWFNCb2Wvsx7qtE0L/V+4M+XNafLh1EreZfsQ5XNNVrNgfI8zZ/2KnW/wU/fYXs/swrR4LQI/iC4p8N4/K9oXWzbVTiszViLAWXm+3pLFaupEzQ+89DrBrMF8/eWvGd6WfaW4mm7s8CYqJ530DMPVhoBDYIaK21dKEvii8XubIK7XP1YBhj+X3yKzD+PcKbi1DlD7VInjeFBuMf7RShkVqMLEV9fn2SnStbqZ5piYT5eZumNAuEiMh1bTTA2wucc/0n42v4Re0SRg/avh7UKtRGgxEXLI5j11vGVLVqaVUw58SIg3Kom1zic08Fyy/QQaKVGxLQ3lQUTtZLpxnLApJBUBJ+udzN32vWhXn71JYvBbZQtUwkKQY9Xi/8AjW23SxejIkIV3LJGdbswxbgJ8Bv8ykKgrpstW/qS92lEAd3HTouakGFxzKptWT7VTrmW8lwVHjGIB9AhC/NrNdQ6BezW233RCmZkUkVpaxMIKlLLO+fGh8Jg8JxpQXFgcTNHgfdkw71Y5I+kRfNd72J4yXik9pVYOVbzxDgPsea4ydC+LDVhgAFQvwe2lh4QzeKFbfc8Xm2sFeKbSaMNEN/+0qcWl9nj//t6FxOok75opSRKP4YE0insIowa69lY5qqc1ud4q3voOj6I3A==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: digital-ocean-token
+      namespace: cert-manager
+---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -13,3 +28,8 @@ spec:
       - http01:
           ingress:
             ingressClassName: traefik
+      - dns01:
+          digitalocean:
+            tokenSecretRef:
+              name: digital-ocean-token
+              key: DO_TOKEN
