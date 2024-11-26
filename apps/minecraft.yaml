@@ -1,4 +1,17 @@
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minecraft-data
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 10Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,8 +37,15 @@ spec:
               value: "TRUE"
             - name: VERSION
               value: 1.8.9
+          volumeMounts:
+            - name: minecraft-data
+              mountPath: /data
           ports:
             - containerPort: 25565
+      volumes:
+        - name: minecraft-data
+          persistentVolumeClaim:
+            claimName: minecraft-data
 ---
 apiVersion: v1
 kind: Service
