@@ -50,4 +50,9 @@ spec:
         expose:
           default: true
         exposedPort: 25565
+    logs:
+      general:
+        level: DEBUG
+      access:
+        enabled: true
     priorityClassName: "system-cluster-critical"
