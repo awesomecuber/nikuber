@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - cluster-issuer.yaml
   - gateway.yaml
+  - traefik-dashboard.yaml

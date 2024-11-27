@@ -55,4 +55,6 @@ spec:
         level: DEBUG
       access:
         enabled: true
+    additionalArguments:
+      - "--api.insecure=true"
     priorityClassName: "system-cluster-critical"
