@@ -1,0 +1,42 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: muse-credentials
+  namespace: default
+spec:
+  encryptedData:
+    DISCORD_TOKEN: AgB6TRigWWdi6TZ8bxAtzsBmD02ALD42q0Eil/3U5Jncx1QCjqGUkg8aYsAU7+Zj5P4mMYOjTe2zrqYM7QcJjHqyoViYPJK1M7gyd55ikOQvPRehvHDfw4xpcbLSJ+OjZrcj/hrbwOcugaj4p/2MGk+yIFZcbgmy/eq3pycrXLWUcOQ1n3AWz3MYvTUcjR24Bmzx678YFSrAw1eVrhDaj1OiuP3nplPWfQ2J/6LbNRhjFqe2fhb/3vhvrZ+sDR/CQOVB1+1iF4O8Z4st/ZW3FweDbbrpvFIA/vGinnNnHOcxsBd5/CjpRMC6jTVpCqZ+cpdRFJFBIXdTikm6TQJhblPT6skI93KWzFqUu2Qwn9zldYZ7znsi7/6Z1o7LBDM+v7Ing4l4CZ15ZH96Xe9MAPHJqaQEfOzT5xrqVxje5vaLcZErD4W3SlOl7hROSr5QsGlCSajrA1AJ4RTCQ7G/edDrdd7qon8pEEo3T2lSHL/36fpKERM9rYmAKZqpXfygBkSGlEQQcTyctWQTDASkuiTAys5K63BX4Sg+bv1f+Oq7TVBpMiF4AOuE2T8RzrcAh+JZ4GpMlosH+sIM3L5M0/E2Gr7XdtruWg1W8yWA956hCmm3VzlE/VJZcLDUjKaDzTakAIeKHsPw40Aa4YmWiUBpX+8tJ42QTCnzTvMePTmZLlLx1EjVVoqrpO245pr20FeqhQwyMzvxS8LAYA5d97njUGb8yNEdtALXl3XEQwFzgjUPDn+LCW/U4Lk+EGwda0zYEe7SvGtSnfAyslRn8al7E7swB81v
+    SPOTIFY_CLIENT_ID: AgAiasakr8LKcvrc1eygdwOaZ1sluSsumQGTE2foBtN6cNrZkm3ji6fvBovPZVAFBUfwuR/8fhvizOC70j+fl6OK3X+V9hJiCiH1RndkF4xBxVIk8Zf6nByEc6EjktMmVF0GrIZrxgKuUPlRp8z7b3O+U3P7L65xAiA8NIjTccca/AEFOaD2x6VZ+0diPw30+IRa1Usm8Ai9DAHDs9XO+d2u0DocADAszJ7aoIgUaAlwPst4BKcy7vuUxsZPounKA2fGt7odejrMk9Oon4W9jm7LbIrQYq0clisGohtgQ3FQtEpDttUQbiRO7NJYiC1sNKI7QhusW7FdjONcDQ+Q3TNGX3+B2YH3cEHFaYeh+cttb4bSN1b17qMIsoVyy6QP6sA7wELbyewga3b7VlufhbkppH9cH6CyV4wdPLBxaPMHvTlaeUS4I6E25BTpXyDlwrXqdq4aAY2ck4J7O+eb50zJ2QfWS1FRraiePoMiLDEs5JXDnytaaPuOtQicRBLYr25DoBZbVlMHat7Fr64d3hLtRHYftcFbI1ZeZdsn3n64lukP+7X59L4URkjK3WeknQK4u0KxaI2FIkAEJRCfvxQfDY1hk5p13dyMuCOvQjwjSHuErv/XPhVDpuSsZTgi1E8J8H9f6iFtoRuAUD+8NtUsd9k2J5qVk/sfib6UtxP2DMr8t6xUR3XSae9cSMIwGEjfv5zoLKyXq6L6InzHiogi1Bj919BNZAT4YYTlT/ZhFg==
+    SPOTIFY_CLIENT_SECRET: AgBlqUH82ghOHz/xbC/XKmsUi8cnqeYGtNnvxLYRXNBXZV5YlrzPDEdagealr2nvoesrJTKGh44Y3eazm7DfdcWez+TB2Hmiv3lHiGw4Dw2TsaZkaf6UsBpkNw/Wq42RYQE1JAQ3w2uY/UZ7t0DC//VwjfXnIfSLDiEwnvSDXScgEryX3x9DcL+7p1Jjmi1bDIQNb9Bc3YbxW24OyLIDnYx6PeV3tmc/TPVNeqCJDkNXoIzV2NX3LiSscfmaOEREqBjJWZcudZhebXgG58carpDTCxEryM1g+EsTSLdkWIfD8+OMQR39KxlQiysfMku0OpN8GpPKBhxBN+Xmd8qMs+M9rq+yMn4rm2mzcdxq/9a/FkDSHul1+s7OG4Omcv1HguK2EjwG4usRFfFKVus77USpmx/51SSDnzVnELKy6T7byOWl//Bc+s5Bab7MkzZKt1h9+udyVn4gfpymTyOPpulSekQBMVw+LdjWUZI10mJ0xCXYUUC/Pb4wwl6e3I3AHfhA/HsRt6J19AqGr9VFoDRLb7MiSK5hSHQ7JEyqdCwyR3eqgrTMGr9PQSB76C4fWFIrQi//FckmjkjNDFV0SwnOAaMpz3t/9loMUmf9QEpETuC4YSZ9Meo5nDn1Zpa8zpQFdn++sp+exJ9SB4JynTDOm9czqJIKVyzJ2pi1NBjckgC0CNYhTnbre4XNbtFXbbc/80aAxhU4mMWtGAkpJ+qZJKmSUprUoX67eCK8rOnYog==
+    YOUTUBE_API_KEY: AgCoaV0d6ZqKdXIOZUDALS+t5pnDYN1nFcCLUHwZOvo91HshvQTC890AUawn5dGX3pjoZXYEzZ8xQppcoxDsdXIcvaitROIRVTTbyP8WwrZpyTAhr8Ke18/fs1TjUGR5ncZKqH80Mf1W9RIQxLPudBuOEI12iFF9WvNpWx9mwFO8WuBweQnCXDfb76C7V6ivKDBd9Y3geGgMTOlG1aESRYqJgboAIltyspfIiIrImj46Py8hW7bbA/LB3CgQXt3OZw68MMkoWZJlQdisby7MhV8nbhgZ4Lyv1TWr/9B9sQ316SauhmC884F8xnS4vyVJ84gm06G5My/sipV/LlzV+P6VXVhVcALi9OqUoyjHtTvRf9omnw9/0ZfrYtAzPs91JuxXIbWeeId6g8MPEpF8/cRg0nEFx1O3sx46Qk+l5Spg7rNmoC6b+RM1jwkHY4XNxDuzNKhCWDTHsHIy0JsRHjUIYXcFY0W3LXxzgrwdp30XQtVFDvz/ee2XnvOfo/u+zGmIDc1Sju7CyizY2a1SAlVPau3NbsBINWdD1meMkR6HI7qjC2IRTDqeSsZsI6Xx/yQUScpxqm2RT37YZuN5Tn+ZeMW46q77o3raarsvEFil9/Mau2C4/2NdbQ6BcCYkzDxQampsBylmEwMgtmfDDhZo0DSXBJEWf77cNXMweo2fVtd6n77ojc1CIp5D1WceTMsoVpV16AxWIzj8wF4jHwYqJTelHzAJFjtD1wuJdf3a1Iz1O3/4fgU=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: muse-credentials
+      namespace: default
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: muse
+  labels:
+    app: muse
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: muse
+  template:
+    metadata:
+      labels:
+        app: muse
+    spec:
+      containers:
+        - name: muse
+          image: ghcr.io/museofficial/muse:latest
+          envFrom:
+            - secretRef:
+                name: muse-credentials

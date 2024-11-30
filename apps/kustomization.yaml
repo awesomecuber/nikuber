@@ -5,3 +5,4 @@ resources:
   - homepage.yaml
   - https-redirect.yaml
   - minecraft.yaml
+  - muse.yaml
