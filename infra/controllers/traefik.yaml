@@ -39,7 +39,7 @@ spec:
         enabled: true
         experimentalChannel: true
         statusAddress:
-          ip: 97.126.64.237
+          ip: 174.21.196.208
     ingressClass:
       enabled: false
     gateway:
